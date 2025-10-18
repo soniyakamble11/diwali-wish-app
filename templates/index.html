@@ -679,10 +679,15 @@ setTimeout(() => {
     }, 4000);
 
     const audio = document.getElementById('bgMusic');
-    document.body.addEventListener('click', () => {
-        audio.muted = false;
-        audio.play();
-    });
+
+// Try to play immediately
+audio.play().catch(() => {
+  console.log("Autoplay blocked, waiting for user click...");
+});
+
+document.body.addEventListener('click', () => {
+    audio.play();
+}, { once: true });
 
     // Resize handler
     window.addEventListener('resize', () => {
