@@ -678,6 +678,12 @@ setTimeout(() => {
       setInterval(createSparkle, 800);
     }, 4000);
 
+    const audio = document.getElementById('bgMusic');
+    document.body.addEventListener('click', () => {
+        audio.muted = false;
+        audio.play();
+    });
+
     // Resize handler
     window.addEventListener('resize', () => {
       canvas.width = window.innerWidth;
